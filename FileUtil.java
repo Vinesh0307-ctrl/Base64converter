@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class FileUtil {
-  static String readfile(String path){
+  static byte[] readfile(String path){
       StringBuilder content=new StringBuilder();
         try{
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path),StandardCharsets.UTF_8));
@@ -17,11 +17,20 @@ public class FileUtil {
         }catch (IOException e){
             System.out.println("Cannot find the file. Try giving the full path"+e);
         }
-        return content.toString();
+        String con=content.toString();
+      byte[] output = con.getBytes(StandardCharsets.UTF_8);
+      return output;
     }
-  static String writefile(String content){
-      BufferedWriter writer=new BufferedWriter(new FileWriter("Output.b64"));
-
+  static void writefile(String filename,byte[] data){
+      try {
+          FileOutputStream fos=new FileOutputStream(filename);
+          fos.write(data);
+          fos.close();
+          System.out.println("Successfully encoded the file ");
+      }
+      catch (IOException e){
+          System.out.println("Cannot write into the file: "+e);
+      }
 
   }
 }

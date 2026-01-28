@@ -8,13 +8,12 @@ class Commandnotfoundexception extends Exception{
 public class Main {
 
     public static void main(String[] args) {
-        String content;
-        content=FileUtil.readfile(args[1]);
-        byte[] input_bytes=content.getBytes(StandardCharsets.UTF_8);
+        byte[] input_bytes=FileUtil.readfile(args[1]);
 
         if (args[0].equals("--encode")){
             System.out.println("Encoding the file");
-            byte[] output_byte=encoder.encode(input_bytes);
+            byte[] output_bytes=encoder.encode(input_bytes);
+            FileUtil.writefile("out.b64",output_bytes);
 
         } else if (args[0].equals("--decode")) {
             System.out.println("Decoding the file");
