@@ -17,6 +17,7 @@ public class Main {
 
         } else if (args[0].equals("--decode")) {
             System.out.println("Decoding the file");
+
         }
         else {
             try {
