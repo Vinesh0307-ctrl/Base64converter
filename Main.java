@@ -1,3 +1,4 @@
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 
 class Commandnotfoundexception extends Exception{
@@ -17,7 +18,8 @@ public class Main {
 
         } else if (args[0].equals("--decode")) {
             System.out.println("Decoding the file");
-
+            byte[] output_bytes=Decoder.decode(input_bytes);
+            FileUtil.writefile("Decoded.txt",output_bytes);
         }
         else {
             try {

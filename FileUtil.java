@@ -26,7 +26,7 @@ public class FileUtil {
           FileOutputStream fos=new FileOutputStream(filename);
           fos.write(data);
           fos.close();
-          System.out.println("Successfully encoded the file ");
+          System.out.println("Successfully converted the file ");
       }
       catch (IOException e){
           System.out.println("Cannot write into the file: "+e);
